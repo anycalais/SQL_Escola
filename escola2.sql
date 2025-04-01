@@ -1,4 +1,4 @@
-USE Escola;
+USE escola;
 
 INSERT INTO Alunos (nome, data_nascimento, endereco) VALUES
 ('Carlos Silva', '2005-03-15', 'Rua A, 123'),

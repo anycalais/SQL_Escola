@@ -1,0 +1,45 @@
+CREATE DATABASE Escola;
+USE Escola;
+
+CREATE TABLE Alunos (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+data_nascimento DATE NOT NULL,
+endereco VARCHAR(255)
+);
+
+CREATE TABLE Professores (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+especialidade VARCHAR(100)
+);
+
+CREATE TABLE Turmas (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(50) NOT NULL,
+id_professor INT,
+FOREIGN KEY (id_professor) REFERENCES Professores(id)
+);
+
+CREATE TABLE Matriculas (
+id INT AUTO_INCREMENT PRIMARY KEY,
+id_aluno INT,
+id_turma INT,
+data_matricula DATE,
+FOREIGN KEY (id_aluno) REFERENCES Alunos(id),
+FOREIGN KEY (id_turma) REFERENCES Turmas(id)
+);
+
+CREATE TABLE Funcionarios (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+cargo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Usuarios (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario VARCHAR(50) UNIQUE NOT NULL,
+senha VARCHAR(255) NOT NULL,
+tipo ENUM('admin', 'professor', 'aluno') NOT NULL
+);
+
